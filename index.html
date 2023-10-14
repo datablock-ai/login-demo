@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presail login demo</title>
+    <link rel="stylesheet" href="src/index.css"/>
+  </head>
+  <body>
+    <div class="flex items-center justify-center h-screen w-screen">
+      <div class="flex flex-col gap-5 border-solid border-gray-500 border rounded p-5 max-w-xs md:max-w-md">
+        <div class="flex flex-col gap-2">
+          <button id="metamask">MetaMask</button>
+          <button id="walletConnect">WalletConnect</button>
+          <div id="status" class="text-center break-words text-sm">Not connected</div>
+          <button id="disconnect">Disconnect</button>
+        </div>
+        <div id="signSection" class="flex flex-col gap-5 hidden">
+          <hr>
+          <button id="sign">Sign message</button>
+          <div id="signatureStatus" class="text-center break-words text-sm"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/wagmi.ts"></script>
+  </body>
+</html>
