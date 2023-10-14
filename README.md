@@ -1,4 +1,9 @@
-Instructions:
+# Simple Web3 Login
+
+This is a simple Web3 login that allows you to connect to your wallet, and to use
+use your wallet to sign a message (a mechanism often used to log in in Web3 apps).
+
+![app_preview.png](public%2Fapp_preview.png) ![signature_preview.png](public%2Fsignature_preview.png)
 
 ## Install
 
@@ -11,12 +16,6 @@ Instructions:
 `npm install`
 
 ## Run
-
-You need to set your WalletConnect project ID.
-
-The recommended way is to create a `.env` file and add a `VITE_WALLET_CONNECT_PROJECT_ID` variable with the project ID.
-
-Otherwise, you can directly hardcode the value in the `src/wagmi.ts` file.
 
 ### Yarn
 
