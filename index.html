@@ -1,28 +1,69 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Presail login demo</title>
-    <link rel="stylesheet" href="src/index.css"/>
-  </head>
-  <body>
-    <div class="flex items-center justify-center h-screen w-screen">
-      <div class="flex flex-col gap-5 border-solid border-gray-500 border rounded p-5 max-w-xs md:max-w-md">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Presail login demo</title>
+  <link rel="stylesheet" href="src/index.css"/>
+</head>
+<body>
+<div class="flex flex-col">
+  <div class="flex flex-col items-center justify-center h-screen w-screen z-10">
+    <div class="auth-container flex">
+      <div class="auth flex flex-col m-1 gap-5 p-8">
         <div class="flex flex-col gap-2">
-          <button id="metamask">MetaMask</button>
-          <button id="walletConnect">WalletConnect</button>
-          <div id="status" class="text-center break-words text-sm">Not connected</div>
-          <button id="disconnect">Disconnect</button>
+          <div class="flex flex-row mt-0 gap-12 auth-header-container align-middle">
+            <h2>Connect wallet</h2>
+            <div id="status-container" class="flex flex-row p-2.5">
+              <div id="status" class="text-center break-words text-sm">Not connected</div>
+              <div class="dot mt-1.5 ml-1.5"></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-5">
+            <button id="metamask" class="flex flex-row content-center items-center justify-between mt-8">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" width="24px">
+              <span>MetaMask</span>
+              <div class="arrow-right"/>
+            </button>
+            <button id="walletConnect" class="flex flex-row content-center items-center justify-between">
+              <img src="https://walletconnect.com/_next/static/media/brand_logo_blue.60e0f59b.svg" width="24px">
+              <span>WalletConnect</span>
+              <div class="arrow-right"/>
+            </button>
+          </div>
         </div>
-        <div id="signSection" class="flex flex-col gap-5 hidden">
-          <hr>
-          <button id="sign">Sign message</button>
+        <div id="signSection" class="flex flex-col gap-2 hidden">
+          <span class="mb-4">Wallet is connected, sign in to view your account</span>
+          <button id="sign">
+            <span>Sign in</span>
+            <img class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" src="/loading.svg" width="18px">
+          </button>
           <div id="signatureStatus" class="text-center break-words text-sm"></div>
         </div>
+        <button id="disconnect">Disconnect</button>
       </div>
     </div>
-    <script type="module" src="/src/wagmi.ts"></script>
-  </body>
+    <img class="mt-5 block" src="/dots.svg">
+  </div>
+  <footer class="flex flex-row items-center justify-center w-screen absolute bottom-0 gap-5 z-10">
+    <a href="/" class="flex flex-row items-center gap-5">
+      <img src="/presail.svg" width="24px">
+      <span>Powered by Presail</span>
+    </a>
+  </footer>
+  <div class="bar right-1/8 w-5 h-screen absolute"/>
+</div>
+<script type="module" src="/src/wagmi.ts"></script>
+<script type="application/javascript">
+  const copyURI = (evt, signature) => {
+    evt.preventDefault();
+    navigator.clipboard.writeText(signature).then(() => {
+      alert('Signature copied to clipboard');
+    }, () => {
+      alert('Failed to copy signature to clipboard');
+    });
+  }
+</script>
+</body>
 </html>
