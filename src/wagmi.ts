@@ -89,6 +89,7 @@ signButton.addEventListener('click', async () => {
     try {
       const address = await config.connector?.getAccount()!;
       const signature = await signer.signMessage({
+        // @ts-ignore
         account: address.toLowerCase(),
         message: 'Sign this message to sign in',
       });
